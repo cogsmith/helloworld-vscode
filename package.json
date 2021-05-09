@@ -8,16 +8,33 @@
 		"vscode": "^1.32.0"
 	},
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:extension.HELLOWORLD"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "extension.HELLOWORLD",
+				"title": "HELLOWORLD"
 			}
-		]
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "VIEW_CONTAINER",
+					"title": "HELLOWORLD",
+					"icon": "media/icon.png"
+				}
+			]
+		},
+		"views": {
+			"VIEW_CONTAINER": [
+				{
+					"id": "HELLOWORLD_VIEW",
+					"name": "HELLOWORLD_VIEW"
+				}
+			]
+		}
 	},
 	"scripts": {},
 	"devDependencies": {

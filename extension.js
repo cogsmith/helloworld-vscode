@@ -16,18 +16,25 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('extension.HELLOWORLD', () => {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
+		vscode.window.showInformationMessage('HELLOWORLD');
 	});
 
 	context.subscriptions.push(disposable);
+
+	const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 10);
+	statusBarItem.command = 'extension.HELLOWORLD';
+	statusBarItem.text = 'HELLOWORLD';
+	statusBarItem.show();
+	context.subscriptions.push(statusBarItem);
+
 }
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() { }
 
 // eslint-disable-next-line no-undef
 module.exports = {

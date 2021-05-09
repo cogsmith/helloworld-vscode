@@ -18,6 +18,12 @@
 				"title": "HELLOWORLD"
 			}
 		],
+		"keybindings": [
+			{
+				"command": "extension.HELLOWORLD",
+				"key": "ctrl+alt+shift+F1"
+			}
+		],
 		"viewsContainers": {
 			"activitybar": [
 				{

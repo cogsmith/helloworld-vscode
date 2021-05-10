@@ -9,7 +9,7 @@ activate = function (context) {
 
 	//
 
-	const vscmd = vscode.commands.registerCommand('extension.HELLOWORLD', async () => {
+	const CMD_HELLOWORLD = vscode.commands.registerCommand('extension.HELLOWORLD', async () => {
 		vscode.window.showInformationMessage('INFO');
 		vscode.window.showWarningMessage('WARNING');
 		vscode.window.showErrorMessage('ERROR');
@@ -17,7 +17,12 @@ activate = function (context) {
 		vscode.window.showInformationMessage(input);
 		console.log(input);
 	});
-	context.subscriptions.push(vscmd);
+	context.subscriptions.push(CMD_HELLOWORLD);
+
+	const CMD_ITEMCLICK = vscode.commands.registerCommand('extension.ITEMCLICK', async (k) => {
+		vscode.window.showInformationMessage(k);
+	});
+	context.subscriptions.push(CMD_ITEMCLICK);
 
 	//
 
@@ -37,10 +42,13 @@ activate = function (context) {
 
 		getTreeItem(q) {
 			console.log({ GetTreeItem: q });
+			//if (q == 'LEAF') { vscode.window.showInformationMessage(q); }
+			let cstate = (q == 'LEAF') ? vscode.TreeItemCollapsibleState.None : vscode.TreeItemCollapsibleState.Collapsed;
 			let treeitem = {
 				label: q,
 				tooltip: 'TOOLTIP',
-				collapsibleState: (q == 'LEAF') ? vscode.TreeItemCollapsibleState.None : vscode.TreeItemCollapsibleState.Collapsed
+				collapsibleState: cstate,
+				command: { command: 'extension.ITEMCLICK', title: 'CMD_TREEITEM', arguments: [q] }
 			};
 			return treeitem;
 		}
@@ -48,6 +56,7 @@ activate = function (context) {
 		getChildren(q) {
 			console.log({ GetChildren: q });
 			if (!q) { return ['CHILD1', 'CHILD2']; }
+			//vscode.window.showInformationMessage(q);
 			return ['NODE', 'LEAF'];
 		}
 	}

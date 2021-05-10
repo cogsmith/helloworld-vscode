@@ -1,8 +1,17 @@
 const vscode = require('vscode');
 
+const App = {};
+App.Main = async function () {
+}
+
 activate = function (context) {
-	let vscmd = vscode.commands.registerCommand('extension.HELLOWORLD', () => {
-		vscode.window.showInformationMessage('HELLOWORLD');
+	let vscmd = vscode.commands.registerCommand('extension.HELLOWORLD', async () => {
+		vscode.window.showInformationMessage('INFO');
+		vscode.window.showWarningMessage('WARNING');
+		vscode.window.showErrorMessage('ERROR');
+		const input = await vscode.window.showInputBox();
+		vscode.window.showInformationMessage(input);
+		console.log(input);
 	});
 	context.subscriptions.push(vscmd);
 

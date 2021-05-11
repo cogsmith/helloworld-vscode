@@ -58,7 +58,7 @@ activate = function (context) {
 			let iconpath = new vscode.ThemeIcon('globe');
 			if (q == 'LEAF') {
 				cstate = vscode.TreeItemCollapsibleState.None;
-				iconpath = new vscode.ThemeIcon('globe')
+				iconpath = new vscode.ThemeIcon('debug-breakpoint-log-disabled')
 			}
 
 			let treeitem = {

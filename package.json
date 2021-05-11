@@ -27,26 +27,66 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "VIEW_CONTAINER",
+					"id": "SIDEBAR",
+					"title": "HELLOWORLD",
+					"icon": "media/icon.png"
+				}
+			],
+			"panel": [
+				{
+					"id": "PANEL",
 					"title": "HELLOWORLD",
 					"icon": "media/icon.png"
 				}
 			]
 		},
 		"views": {
-			"VIEW_CONTAINER": [
+			"SIDEBAR": [
 				{
-					"id": "HELLOWORLD_VIEW",
-					"name": "HELLOWORLD_VIEW"
+					"id": "HELLOWORLD_INFOVIEW",
+					"name": "HELLOWORLD_INFOVIEW",
+					"visibility": "visible"
+				},
+				{
+					"id": "HELLOWORLD_TREEVIEW",
+					"name": "HELLOWORLD_TREEVIEW",
+					"visibility": "visible"
+				}
+			],
+			"PANEL": [
+				{
+					"id": "HELLOWORLD_PANELVIEW",
+					"name": "HELLOWORLD_PANELVIEW",
+					"visibility": "visible"
 				}
 			]
 		},
 		"viewsWelcome": [
 			{
-				"view": "HELLOWORLD_VIEW",
+				"view": "HELLOWORLD_PANELVIEW",
+				"contents": "HELLOWORLD PANEL VIEW\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
+			},
+			{
+				"view": "HELLOWORLD_TREEVIEW",
+				"contents": "... PLEASE WAIT EXTENSION LOADING ..."
+			},
+			{
+				"view": "HELLOWORLD_INFOVIEW",
 				"contents": "HELLOWORLD\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
+			},
+			{
+				"view": "explorer",
+				"contents": "HELLOWORLD EXPLORER VIEW\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
 			}
-		]
+		],
+		"menus": {
+			"view/item/context": [
+				{
+					"command": "extension.HELLOWORLD",
+					"when": "view == HELLOWORLD_TREEVIEW"
+				}
+			]
+		}
 	},
 	"scripts": {},
 	"devDependencies": {

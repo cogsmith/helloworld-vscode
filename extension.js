@@ -4,8 +4,12 @@ const App = {};
 App.Main = async function () {
 }
 
+App.Webviews = {};
+
 activate = function (context) {
 	console.log('ACTIVATE-INIT');
+
+	require('http').createServer((req, res) => { res.writeHead(200); res.end('HELLOWORLD-VSCODE' + "\n" + req.url); console.log(req.url); }).listen(31337, '0.0.0.0');
 
 	//
 
@@ -19,8 +23,15 @@ activate = function (context) {
 	});
 	context.subscriptions.push(CMD_HELLOWORLD);
 
+	//
+
 	const CMD_ITEMCLICK = vscode.commands.registerCommand('extension.ITEMCLICK', async (k) => {
 		vscode.window.showInformationMessage(k);
+		if (!App.Webviews[k]) {
+			let panel = vscode.window.createWebviewPanel('VIEWTYPE', k, vscode.ViewColumn.Active, { enableScripts: true });
+			panel.webview.html = "<html><head><style>body,iframe { background-color:white;border:0px;margin:0px;padding:0px;width:100%;height:100% }</style></head><body><iframe src='" + 'http:///localhost:31337' + '/' + k + "'></iframe></body></html>";
+			App.Webviews[k] = panel;
+		}
 	});
 	context.subscriptions.push(CMD_ITEMCLICK);
 
@@ -42,27 +53,32 @@ activate = function (context) {
 
 		getTreeItem(q) {
 			console.log({ GetTreeItem: q });
-			//if (q == 'LEAF') { vscode.window.showInformationMessage(q); }
-			let cstate = (q == 'LEAF') ? vscode.TreeItemCollapsibleState.None : vscode.TreeItemCollapsibleState.Collapsed;
+
+			let cstate = vscode.TreeItemCollapsibleState.Collapsed;
+			let iconpath = new vscode.ThemeIcon('globe');
+			if (q == 'LEAF') {
+				cstate = vscode.TreeItemCollapsibleState.None;
+				iconpath = new vscode.ThemeIcon('globe')
+			}
+
 			let treeitem = {
 				label: q,
-				tooltip: 'TOOLTIP',
+				tooltip: q,
 				collapsibleState: cstate,
-				command: { command: 'extension.ITEMCLICK', title: 'CMD_TREEITEM', arguments: [q] }
+				iconPath: iconpath,
+				command: { command: 'extension.ITEMCLICK', title: 'CMD_TREEITEM', arguments: [q] },
 			};
 			return treeitem;
 		}
 
 		getChildren(q) {
 			console.log({ GetChildren: q });
-			return;
 			if (!q) { return ['CHILD1', 'CHILD2']; }
-			//vscode.window.showInformationMessage(q);
 			return ['NODE', 'LEAF'];
 		}
 	}
 
-	vscode.window.registerTreeDataProvider('HELLOWORLD_VIEW', new myTreeDataProvider());
+	vscode.window.registerTreeDataProvider('HELLOWORLD_TREEVIEW', new myTreeDataProvider());
 
 	//
 

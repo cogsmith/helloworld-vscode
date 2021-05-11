@@ -11,6 +11,7 @@
     viewsContainers
     views
     viewsWelcome
+    menus
 
 # SCREENSHOT
 

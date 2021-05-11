@@ -40,7 +40,13 @@
 					"name": "HELLOWORLD_VIEW"
 				}
 			]
-		}
+		},
+		"viewsWelcome": [
+			{
+				"view": "HELLOWORLD_VIEW",
+				"contents": "HELLOWORLD\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
+			}
+		]
 	},
 	"scripts": {},
 	"devDependencies": {

@@ -55,6 +55,7 @@ activate = function (context) {
 
 		getChildren(q) {
 			console.log({ GetChildren: q });
+			return;
 			if (!q) { return ['CHILD1', 'CHILD2']; }
 			//vscode.window.showInformationMessage(q);
 			return ['NODE', 'LEAF'];

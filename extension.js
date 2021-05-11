@@ -22,7 +22,7 @@ activate = function (context) {
 
 	//
 
-	const CMD_HELLOWORLD = vscode.commands.registerCommand('HELLOWORLD.HELLOWORLD', async () => {
+	const CMD_SHOWMSGS = vscode.commands.registerCommand('HELLOWORLD.SHOWMSGS', async () => {
 		vscode.window.showInformationMessage('INFO');
 		vscode.window.showWarningMessage('WARNING');
 		vscode.window.showErrorMessage('ERROR');
@@ -30,7 +30,7 @@ activate = function (context) {
 		vscode.window.showInformationMessage(input);
 		console.log(input);
 	});
-	context.subscriptions.push(CMD_HELLOWORLD);
+	context.subscriptions.push(CMD_SHOWMSGS);
 
 	//
 
@@ -57,7 +57,7 @@ activate = function (context) {
 	//
 
 	const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 10);
-	statusBarItem.command = 'HELLOWORLD.HELLOWORLD';
+	statusBarItem.command = 'HELLOWORLD.SHOWMSGS';
 	statusBarItem.text = 'HELLOWORLD';
 	statusBarItem.show();
 	context.subscriptions.push(statusBarItem);
@@ -106,7 +106,7 @@ activate = function (context) {
 	const AddLink = function (id, link) {
 		if (!link) {
 			if (typeof (id) == 'string') { link = { URL: id }; } else { link = id; }
-			id = 'LINK' + Object.keys(LINKS).length;
+			id = 'LINK' + Object.keys(LINKS).length + 1;
 		}
 		link.ID = id;
 		if (!link.Icon) { link.Icon = 'globe' }; link.Icon = new vscode.ThemeIcon(link.Icon);
@@ -115,6 +115,7 @@ activate = function (context) {
 
 	AddLink('XT_DEMO', { URL: 'http://xtdemo.cogsmith.com', Icon: 'star' });
 	AddLink('BACKEND', { URL: 'http://localhost:31337/', Icon: 'gear' });
+	AddLink('WIKIPEDIA', { URL: 'https://en.wikipedia.org/wiki/Visual_Studio_Code' });
 
 	const TREEDATA_LINKVIEW = {};
 

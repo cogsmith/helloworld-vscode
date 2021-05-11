@@ -1,9 +1,8 @@
 {
-	"name": "helloworld-minimal-sample",
-	"description": "Minimal HelloWorld example for VS Code",
+	"name": "helloworld-vscode",
+	"description": "Basic VSCODE Examples",
 	"version": "0.0.1",
-	"publisher": "vscode-samples",
-	"repository": "https://github.com/Microsoft/vscode-extension-samples/helloworld-minimal-sample",
+	"repository": "https://github.com/cogsmith/helloworld-vscode",
 	"engines": {
 		"vscode": "^1.32.0"
 	},
@@ -14,13 +13,13 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.HELLOWORLD",
+				"command": "HELLOWORLD.SHOWMSGS",
 				"title": "HELLOWORLD"
 			}
 		],
 		"keybindings": [
 			{
-				"command": "extension.HELLOWORLD",
+				"command": "HELLOWORLD.SHOWMSGS",
 				"key": "ctrl+alt+shift+F1"
 			}
 		],
@@ -69,11 +68,11 @@
 		"viewsWelcome": [
 			{
 				"view": "HELLOWORLD_PANELVIEW",
-				"contents": "HELLOWORLD PANEL VIEW\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
+				"contents": "HELLOWORLD PANEL VIEW\n[HELLOWORLD](command:HELLOWORLD.SHOWMSGS)\n"
 			},
 			{
 				"view": "HELLOWORLD_INFOVIEW",
-				"contents": "HELLOWORLD\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
+				"contents": "HELLOWORLD\n[HELLOWORLD](command:HELLOWORLD.SHOWMSGS)\n"
 			},
 			{
 				"view": "HELLOWORLD_LINKVIEW",
@@ -85,7 +84,7 @@
 			},
 			{
 				"view": "explorer",
-				"contents": "HELLOWORLD EXPLORER VIEW\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
+				"contents": "HELLOWORLD EXPLORER VIEW\n[HELLOWORLD](command:HELLOWORLD.SHOWMSGS)\n"
 			}
 		],
 		"menus": {

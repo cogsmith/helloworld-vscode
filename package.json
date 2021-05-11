@@ -48,6 +48,11 @@
 					"visibility": "visible"
 				},
 				{
+					"id": "HELLOWORLD_LINKVIEW",
+					"name": "HELLOWORLD_LINKVIEW",
+					"visibility": "visible"
+				},
+				{
 					"id": "HELLOWORLD_TREEVIEW",
 					"name": "HELLOWORLD_TREEVIEW",
 					"visibility": "visible"
@@ -67,12 +72,16 @@
 				"contents": "HELLOWORLD PANEL VIEW\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
 			},
 			{
-				"view": "HELLOWORLD_TREEVIEW",
+				"view": "HELLOWORLD_INFOVIEW",
+				"contents": "HELLOWORLD\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
+			},
+			{
+				"view": "HELLOWORLD_LINKVIEW",
 				"contents": "... PLEASE WAIT EXTENSION LOADING ..."
 			},
 			{
-				"view": "HELLOWORLD_INFOVIEW",
-				"contents": "HELLOWORLD\n[HELLOWORLD](command:extension.HELLOWORLD)\n"
+				"view": "HELLOWORLD_TREEVIEW",
+				"contents": "... PLEASE WAIT EXTENSION LOADING ..."
 			},
 			{
 				"view": "explorer",
@@ -91,5 +100,8 @@
 	"scripts": {},
 	"devDependencies": {
 		"@types/vscode": "^1.32.0"
+	},
+	"dependencies": {
+		"@cogsmith/xt": "^1.0.148"
 	}
 }

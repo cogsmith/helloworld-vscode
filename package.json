@@ -90,7 +90,7 @@
 		"menus": {
 			"view/item/context": [
 				{
-					"command": "extension.HELLOWORLD",
+					"command": "HELLOWORLD.SHOWMSGS",
 					"when": "view == HELLOWORLD_TREEVIEW"
 				}
 			]

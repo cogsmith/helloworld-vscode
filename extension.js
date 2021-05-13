@@ -53,6 +53,18 @@ activate = function (context) {
 	});
 	context.subscriptions.push(CMD_IFRAME);
 
+	//
+
+	const CMD_EXECA = vscode.commands.registerCommand('HELLOWORLD.EXECA', async (cmd) => {
+		console.log('#');
+		console.log('CMD_EXECA: ' + cmd);
+		let cmdout = XT.EXECA.commandSync(cmd).stdout;
+		console.log(cmdout);
+		console.log('#');
+		//XT.EXECA.command(cmd).stdout.pipe(process.stdout);
+	});
+	context.subscriptions.push(CMD_EXECA);
+	vscode.commands.executeCommand('HELLOWORLD.EXECA', 'WHOAMI');
 
 	//
 
@@ -72,6 +84,8 @@ activate = function (context) {
 
 		getTreeItem(q) {
 			console.log({ GetTreeItem: q });
+
+			vscode.commands.executeCommand('HELLOWORLD.EXECA', 'dir');
 
 			let cstate = vscode.TreeItemCollapsibleState.Collapsed;
 			let iconpath = new vscode.ThemeIcon('globe');
